@@ -6,6 +6,7 @@
 //
 
 #import "SceneDelegate.h"
+#import <Parse/Parse.h>
 
 @interface SceneDelegate ()
 
@@ -18,6 +19,22 @@
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    
+    // Code to initialize Parse
+    // (See above section 'Parse `initializeWithConfiguration` vs `setApplicationId`', if you have not already set it up)
+    
+//    if (PFUser.currentUser) {
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//
+//        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
+//    }
+//
+//    return YES;
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabController"];
+    }
 }
 
 
@@ -32,6 +49,15 @@
 - (void)sceneDidBecomeActive:(UIScene *)scene {
     // Called when the scene has moved from an inactive state to an active state.
     // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+//    PFUser *user = [PFUser currentUser];
+//    if (user != nil) {
+//        NSLog(@"Welcome back %@ 😀", user.username);
+//
+//        // TODO: Load Chat view controller and set as root view controller
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        UIViewController *chatNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"FeedNavController"];
+//        self.window.rootViewController = chatNavigationController;
+//    }
 }
 
 
